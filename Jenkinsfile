@@ -22,8 +22,8 @@ pipeline {
             steps {
                 sh 'echo subindo para o dockerhub'
                 sh 'docker tag projetodluisb dluisb/projetodluisb'
-                sh 'docker login -u $DOCKER_USER -p $DOCKER_PASSWORD'
                 sh 'docker push dluisb/projetodluisb'
+                sh 'docker login'
             }
         }
      }
