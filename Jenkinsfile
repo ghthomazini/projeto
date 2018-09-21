@@ -22,7 +22,7 @@ pipeline {
             steps {
                sh 'echo subindo para o dockerhub'
                sh 'docker tag projetodluisb dluisb/projetodluisb'
-               sh 'docker login -u dluisb -p $DOCKER_PASSWORD' 
+               sh 'docker login -u dluisb -p FULLbuster-1731' 
                sh 'docker push dluisb/projetodluisb'
             }
         }
