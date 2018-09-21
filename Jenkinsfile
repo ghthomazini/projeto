@@ -1,4 +1,4 @@
-pipeline {
+ispipeline {
    agent any
     stages {
        stage('Build') {
@@ -15,13 +15,13 @@ pipeline {
         }
        stage('subir container') {
          steps {
-             sh 'docker run -d --name maquinateste -p 85:8080 projetodluisb'
+             sh 'docker run -d --name teste -p 85:8080 projetodluisb'
          }
         }
         stage ('subindo para o dockerhub') {
             steps {
                 sh 'echo subindo para o dockerhub'
-                sh 'docker tag projetolua dluisb/projetodluisb'
+                sh 'docker tag projetodluisb dluisb/projetodluisb'
                 sh 'docker login'
                 sh 'docker push dluisb/projetodluisb'
             }
