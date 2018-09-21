@@ -1,39 +1,30 @@
 pipeline {
    agent any
     stages {
-       stage('#1 Git') {
+       stage('Build') {
+            steps {
+                sh 'mvn clean package'
+                sh 'echo clean package realizado'
+            }
+        }
+        stage('build') {
+            steps {
+                sh 'docker build --tag projetodluisb .'
+                sh 'echo build realizado'
+            }
+        }
+       stage('subir container') {
          steps {
-            git 'https://github.com/dluisb/projeto.git'
+             sh 'docker run -d --name maquinateste -p 85:8080 projetodluisb'
          }
-       }
-       stage('#2 Testes') { 
-            steps {
-               sh 'echo testes'  
-            }
         }
-       stage('#3 Package') { 
-            steps {
-                sh 'echo build da aplicação'
-                sh 'mvn clean package' 
-            }
-        }
-        stage('#4 Docker image') {
-            steps {
-                sh 'echo build da imagem'
-                sh 'docker build --tag desafio:1.0 .'
-            }
-        }
-        stage('#5 Upload docker image') {
+        stage ('subindo para o dockerhub') {
             steps {
                 sh 'echo subindo para o dockerhub'
-                sh 'docker tag desafio-devops:1.0 192.168.56.101:5000/desafio-devops:1.0'
-                sh 'docker push 192.168.56.101:5000/desafio:1.0'
+                sh 'docker tag projetolua dluisb/projetodluisb'
+                sh 'docker login'
+                sh 'docker push dluisb/projetodluisb'
             }
         }
-        stage('#6 Deploy') {
-         steps {
-             sh 'docker run -d -p 85:8080 desafio-devops:1.0'
-         }
-        }
-    }
+     }
 }
