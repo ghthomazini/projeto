@@ -15,7 +15,7 @@ pipeline {
         }
        stage('subir container') {
          steps {
-             sh 'docker run -d --name agora-vai -p 89:8080 projetodluisb'
+             sh 'docker run -d --name agora-vai -p 81:8080 projetodluisb'
          }
         }
         stage ('subindo para o dockerhub') {
