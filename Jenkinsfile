@@ -9,24 +9,22 @@ pipeline {
         }
         stage('build') {
             steps {
-                sh 'docker build --tag projetodluisb .'
+                sh 'docker build --tag ghthomazini .'
                 sh 'echo build realizado'
             }
         }
        stage('subir container') {
          steps {
-             sh 'docker stop teste2'
-             sh 'docker rm teste2'
-             sh 'docker run -d --name teste2 -p 83:8080 projetodluisb'
+             sh 'docker run -d --name ghthomazini -p 86:8080 ghthomazini'
          }
         }
         stage ('subindo para o dockerhub') {
             steps {
-               withCredentials([string(credentialsId: 'nome', variable: 'USUARIO'), string(credentialsId: 'senha', variable: 'SENHA') ]) {
+               withCredentials([string(credentialsId: 'nome', variable: 'USER'), string(credentialsId: 'senha', variable: 'SENHA') ]) {
                   sh 'echo subindo para o dockerhub'
-                  sh 'docker tag projetodluisb dluisb/projetodluisb'
-                  sh 'docker login -u $USUARIO -p $SENHA' 
-                  sh 'docker push dluisb/projetodluisb'
+                  sh 'docker tag ghthomazini ghthomazini/projetodevops'
+                  sh 'docker login -u $USER -p $SENHA' 
+                  sh 'docker push ghthomazini/projetodevops'
                }
             }
         }
