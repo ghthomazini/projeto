@@ -21,6 +21,8 @@ pipeline {
         }
        stage('subir container') {
          steps {
+             sh 'docker stop ghthomazini'
+             sh 'docker rm ghthomazini'
              sh 'docker run -d --name ghthomazini -p 86:8080 ghthomazini'
          }
         }
