@@ -1,12 +1,14 @@
 pipeline {
    agent any
     stages {
+       steps{
        stage ('Checkout'){
    deleteDir()
   checkout scm
  }
+       }
        stage('Build') {
-                      steps {
+          steps {
                 sh 'mvn clean package'
                 sh 'echo clean package realizado'
             }
