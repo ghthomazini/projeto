@@ -20,7 +20,7 @@ pipeline {
         }
         stage ('subindo para o dockerhub') {
             steps {
-               withCredentials([string(credentialsId: 'usuario', variable: 'USUARIO'), string(credentialsId: 'senha', variable: 'SENHA') ]) {
+               withCredentials([string(credentialsId: 'nome', variable: 'USUARIO'), string(credentialsId: 'senha', variable: 'SENHA') ]) {
                   sh 'echo subindo para o dockerhub'
                   sh 'docker tag projetodluisb dluisb/projetodluisb'
                   sh 'docker login -u $USUARIO -p $SENHA' 
