@@ -1,9 +1,8 @@
 pipeline {
    agent any
     stages {
-       stage 'Checkout'
- node('slave') {
-  deleteDir()
+       stage ('Checkout'){
+   deleteDir()
   checkout scm
  }
        stage('Build') {
