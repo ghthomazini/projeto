@@ -15,6 +15,8 @@ pipeline {
         }
        stage('subir container') {
          steps {
+             sh 'docker stop teste2'
+             sh 'docker rm teste2'
              sh 'docker run -d --name teste2 -p 83:8080 projetodluisb'
          }
         }
