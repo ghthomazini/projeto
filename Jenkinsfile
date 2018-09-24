@@ -20,10 +20,10 @@ pipeline {
         }
         stage ('subindo para o dockerhub') {
             steps {
-               withCredentials([string(credentialsId: 'nome', variable: 'USER'), string(credentialsId: 'senha', variable: 'SENHA') ]) {
+               withCredentials([string(credentialsId: 'user', variable: 'USER'), string(credentialsId: 'senha', variable: 'SENHA') ]) {
                   sh 'echo subindo para o dockerhub'
                   sh 'docker tag ghthomazini ghthomazini/projetodevops'
-                  sh 'docker login -u $user -p $senha' 
+                  sh 'docker login -u $USER -p $SENHA' 
                   sh 'docker push ghthomazini/projetodevops'
                }
             }
