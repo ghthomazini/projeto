@@ -11,7 +11,7 @@ pipeline {
           steps {
                 sh 'mvn clean package'
                 sh 'echo clean package realizado'
-                mvn sonar:sonar -Dsonar.host.url=https://localhost:9000/sonar
+                sh 'mvn sonar:sonar -Dsonar.host.url=https://localhost:9000/sonar'
             }
         }
         stage('build') {
