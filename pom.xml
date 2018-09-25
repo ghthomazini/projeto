@@ -24,6 +24,19 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 	</properties>
+	<profiles>
+		<profile>
+			<id>sonar<id>
+				<activation>
+					<activeByDefault>true</activeByDefault>
+				</activation>
+				<properties>
+					<sonar.host.url>
+						http://localhost:9000/sonar
+					 </sonar.host.url>
+				</properties>
+			</profile>
+	</profiles>		
 
 	<dependencies>
 		<dependency>
