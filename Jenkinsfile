@@ -7,6 +7,21 @@ pipeline {
   checkout scm
  }
        }
+      
+      stage('SCM') {
+         steps{
+    git 'https://github.com/foo/bar.git'
+  }
+      }
+  stage('SonarQube analysis') {
+     steps{
+    // requires SonarQube Scanner 2.8+
+    def scannerHome = tool 'SonarQube Scanner 2.8';
+    withSonarQubeEnv('My SonarQube Server') {
+      sh "${scannerHome}/bin/sonar-scanner"
+    }
+  }
+  }
        stage('Build') {
           steps {
                 sh 'mvn clean package'
