@@ -1,41 +1,60 @@
-pipeline {
-   agent any
-   stages {
-       stage ('Checkout'){
-          steps{
-   deleteDir()
-  checkout scm
- }
-       }    
-       stage('Build') {
-          steps { 
-                sh 'mvn sonar:sonar -Dsonar.host.url=http://192.168.56.102:9000 -Dsonar.login=82363fda661b9b43cf53082e7dbb82885911b48f'
-                sh 'mvn clean package'
-                sh 'echo clean package realizado'
-                }
-        }
-        stage('build') {
-            steps {
-                sh 'docker build --tag ghthomazini .'
-                sh 'echo build realizado'
-            }
-        }
-       stage('subir container') {
-         steps {
-             sh 'docker stop ghthomazini'
-             sh 'docker rm ghthomazini'
-             sh 'docker run -d --name ghthomazini -p 86:8080 ghthomazini'
-         }
-        }
-        stage ('subindo para o dockerhub') {
-            steps {
-               withCredentials([string(credentialsId: 'senha', variable: 'SENHA') ]) {
-                  sh 'echo subindo para o dockerhub'
-                  sh 'docker tag ghthomazini ghthomazini/projetodevops'
-                  sh 'docker login -u ghthomazini -p $SENHA' 
-                  sh 'docker push ghthomazini/projetodevops'
-               }
-            }
-        }
-     }
-}
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.indra.desafio</groupId>
+	<artifactId>Proxy_Default</artifactId>
+	<version>0.0.1</version>
+	<packaging>jar</packaging>
+
+	<name>Proxy_Default</name>
+	<description>Desafio indra - Proxy Default</description>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.0.5.RELEASE</version>
+		<relativePath /> <!-- lookup parent from repository -->
+	</parent>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+
+</project>
