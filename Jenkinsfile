@@ -9,7 +9,7 @@ pipeline {
        }
        stage('Build') {
           steps {
-                sh 'chmod 777 /var/run/docker.sock'
+                sh 'sudo chmod 777 /var/run/docker.sock'
                 sh 'mvn clean package'
                 sh 'echo clean package realizado'
             }
