@@ -25,7 +25,7 @@
 		<java.version>1.8</java.version>
 		<sonar.host.url>http://localhost:9000/sonar/</sonar.host.url>
 		<sonar.jdbc.url>jdbc:h2:tcp://localhost:9092/sonar</sonar.jdbc.url> 
-		<sonar.core.CodeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
+		<sonar.core.CodeCoveragePlugin>jacoco</sonar.core.CodeCoveragePlugin>
 		<sonar.dynamicAnalysis>reuseReports</soanar.dynamicsAnalysis>
 		<sonar.jacoco.reportPath>${project.basedir}/target/jacoco.exec</sonar.jacoco.reportPath>
 		<sonar.jacoco.itReportPath>${project.basedir}/target?jacoco.exec</sonar.jacoco.itReportPath>
