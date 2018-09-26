@@ -13,7 +13,7 @@ pipeline {
                 sh 'echo clean package realizado'
                 }
         }
-        stage('build') {
+      stage('build') {
             steps {
                 sh 'docker build --tag ghthomazini .'
                 sh 'echo build realizado'
