@@ -16,11 +16,18 @@ pipeline {
         }
        stage('subir container') {
          steps {
-             sh 'docker stop ghthomazini'
-             sh 'docker rm ghthomazini'
-             sh 'docker run -d --name ghthomazini -p 86:8080 ghthomazini'
-         }
-        }
+             script{
+               try{
+                   sh 'docker run -d --name ghthomazini -p 86:8080 ghthomazini'                   
+                 } 
+                catch(exc) {
+                   sh 'docker stop ghthomazini'
+                   sh 'docker rm ghthomazini'
+                   sh 'docker run -d --name ghthomazini -p 86:8080 ghthomazini'
+                     }
+                 }
+             }
+       }
         stage ('subindo para o dockerhub') {
             steps {
                withCredentials([string(credentialsId: 'senha', variable: 'SENHA') ]) {
