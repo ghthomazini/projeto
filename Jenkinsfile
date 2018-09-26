@@ -5,6 +5,8 @@ pipeline {
           steps { 
                 sh 'mvn clean package'
                 sh 'echo clean package realizado'
+                clean verify sonar:sonar -Ptestes-integracao 
+                -Dphantomjs.binary.path=$PHANTOMJS_DIR/bin/phantomjs
                 }
         }
       stage('build') {
