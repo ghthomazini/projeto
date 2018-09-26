@@ -27,7 +27,7 @@ pipeline {
                   sh 'docker tag ghthomazini ghthomazini/projetodevops'
                   sh 'docker login -u ghthomazini -p $SENHA' 
                   sh 'docker push ghthomazini/projetodevops'
-                  sh 'mvn sonar:sonar -Dsonar.host.url=http://192.168.56.102:9000 -Dsonar.login=875bfe889c011559ed896b8a7519f107bccc9c3a'
+                 
                }
             }
         }
