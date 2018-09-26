@@ -3,7 +3,7 @@ pipeline {
    stages {
       stage('Build') {
           steps { 
-                sh 'mvn sonar:sonar'
+                
                 sh 'mvn clean package'
                 sh 'echo clean package realizado'
                 }
