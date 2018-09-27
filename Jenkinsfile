@@ -3,9 +3,9 @@ pipeline {
    stages {
       stage('Build') {
           steps { 
-                sh 'mvn sonar:sonar'
                 sh 'mvn clean package'
                 sh 'echo clean package realizado'
+                sh 'mvn sonar:sonar'
                 }
         }
       stage('build') {
