@@ -7,13 +7,13 @@ pipeline {
             checkout scm
          }
       }
-      stage('Build') {
+     /*stage('Build') {
           steps { 
                 sh 'mvn clean package'
                 sh 'echo clean package realizado'
                 sh 'mvn sonar:sonar'
-                }
-        }
+              }
+       }*/
       stage('build') {
             steps {
                 sh 'docker build --tag ghthomazini .'
