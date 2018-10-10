@@ -55,17 +55,6 @@
 			</plugin>
 		</plugins>
 	</build>
-  <groupId>com.example</groupId>
-  <artifactId>nexus-proxy</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.10</version>
-    </dependency>
-  </dependencies>
-	<distributionManagement>
 <repository>
 <id>nexus</id>
 <name>maven-releases</name>
