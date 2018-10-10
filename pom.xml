@@ -10,13 +10,6 @@
 <version>4.10</version>
 </dependency>
 </dependencies>
-<servers>
-<server>
-<id>nexus</id>
-<username>admin</username>
-<password>admin123</password>
-</server>
-</servers>
 <distributionManagement>
 <repository>
 <id>nexus</id>
