@@ -47,7 +47,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 			</project>
-			</project>
+			<project>
 <modelVersion>4.0.0</modelVersion>
 <groupId>com.example</groupId>
 <artifactId>nexus-proxy</artifactId>
