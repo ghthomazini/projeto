@@ -1,8 +1,0 @@
-{
-  "name": "sample project1",
-  "version": "0.0.1",
-  "description": "Test Project 1",
-  "dependencies" : {
-    "commonjs" : "0.0.1"
-  }
-}
