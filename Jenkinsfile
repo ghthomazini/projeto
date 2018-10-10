@@ -10,8 +10,9 @@ pipeline {
      stage('Pacotes') {
           steps { 
                 sh 'mvn clean package'
-                sh'mvn sonar:sonar'
+                sh 'mvn sonar:sonar'
                 sh 'npm install'
+                sh 'mvn clean deploy'
                 sh 'echo clean package realizado'
                 /* sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.5.0.1254:sonar'*/
               }
