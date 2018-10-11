@@ -15,6 +15,10 @@ pipeline {
                 sh 'echo clean package realizado'
                 /* sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.5.0.1254:sonar'*/
               }
+        
+stage('Publish') {
+        
+} 
        }
       stage('build') {
             steps {
