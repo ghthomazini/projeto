@@ -51,15 +51,4 @@ stage('Publish') {
                }
             }
         }
-      stage('Results') {
-         steps { 
-      junit '**/target/surefire-reports/TEST-*.xml'
-      archive 'target/*.jar'
-               {
-        }
-      stage('Publish') {
-         steps { 
-nexusPublisher nexusInstanceId: 'localNexus2', nexusRepositoryId: 'maven-releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'maven-releases/spring-war']], mavenCoordinate: [artifactId: 'spring-war', groupId: 'org.springframework.boot', packaging: 'war', version: '1.0']]]        
-               {
-         }
-}
+     }
