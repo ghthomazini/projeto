@@ -51,5 +51,11 @@ stage('Publish') {
                }
             }
         }
-     }
+      stage('Results') {
+      junit '**/target/surefire-reports/TEST-*.xml'
+      archive 'target/*.jar'
+        }
+      stage('Publish') {
+      nexusPublisher nexusInstanceId: 'localNexus2', nexusRepositoryId: 'maven-releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'war/target/jenkins.war']], mavenCoordinate: [artifactId: 'jenkin-war', groupId: 'org.jenkins-ci-main', packaging: 'war', version: '2.22']]]   }
+        }
 }
