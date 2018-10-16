@@ -55,8 +55,7 @@ stage('Publish') {
    stage('Publish') {
       steps{
      nexusPublisher nexusInstanceId: 'localNexus2', nexusRepositoryId: 'maven-releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: '/var/lib/jenkins/workspace/Nova-pipeline/target/Proxy_Default-0.0.1.jar']], mavenCoordinate: [artifactId: 'Proxy_Default', groupId: 'com.indra.desafio', packaging: 'jar', version: '0.0.1']]]
-                        }
-                  }
-          }
-     }
+                    }
+              }
+      }
 }
